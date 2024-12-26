@@ -22,13 +22,13 @@ Make sure you have the following installed on your system:
 
 1. **Clone the repository:**
    ```bash
-   git clone  https://github.com/thainaventeu/inventory-backend-project.git
+   git clone https://github.com/thainaventeu/inventory-backend-project.git
    cd inventory-backend
 
 
 2. Install all the dependecies
    ```bash
-    go mod tidy
+   go mod tidy
 
 3. Execute the server 
     ```bash
