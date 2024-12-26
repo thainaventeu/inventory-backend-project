@@ -27,15 +27,18 @@ Make sure you have the following installed on your system:
 
 
 2. Install all the dependecies
-
+   ```bash
     go mod tidy
 
 3. Execute the server 
+    ```bash
     go run main.go
 
 4. Set up the database:
 Create a local PostgreSQL database named inventory_db.
 Update the connection settings in the config/database.go file:
+
+```bash
     const (
     Host     = "localhost"
     Port     = 5432
