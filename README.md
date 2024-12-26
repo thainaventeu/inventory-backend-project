@@ -9,7 +9,7 @@ Make sure you have the following installed on your system:
 - [PostgreSQL](https://www.postgresql.org/download/)
 - [Git](https://git-scm.com/downloads)
 
-
+    ```bash   
     install postgresql@14 
     psql postgres
     CREATE ROLE postgres_user WITH LOGIN PASSWORD 'your_password'
