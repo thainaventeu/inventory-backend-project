@@ -44,3 +44,4 @@ Update the connection settings in the config/database.go file:
     DBName   = "inventory_db"
 )
 
+# inventory-backend-project
