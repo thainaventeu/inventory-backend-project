@@ -13,7 +13,7 @@ import (
 func main() {
 	// Initialize the database
 	config.ConnectDatabase()
-
+    
     // Assign the database connection to the models package
     models.DB = config.DB
 

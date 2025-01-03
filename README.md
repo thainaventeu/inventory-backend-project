@@ -38,7 +38,7 @@ Make sure you have the following installed on your system:
 Create a local PostgreSQL database named inventory.
 Update the connection settings in the config/database.go file:
 
-```bash
+    ```bash
     const (
     Host     = "localhost"
     Port     = 5432

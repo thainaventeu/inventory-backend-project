@@ -2,7 +2,6 @@ package routes
 
 import (
     "inventory-backend/controllers"
-
     "github.com/gin-gonic/gin"
 )
 

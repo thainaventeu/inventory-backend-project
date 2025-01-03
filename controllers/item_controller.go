@@ -56,7 +56,6 @@ func GetItems(c *gin.Context) {
 
 
 // GET /inventory - Get an item by ID
-
 func GetItem(c *gin.Context) {
 	id := c.Param("id")
 	var item models.Item
@@ -85,8 +84,8 @@ func CreateItem(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, item)
 }
-// PUT /inventory - Update an item by ID 
 
+// PUT /inventory - Update an item by ID 
 func UpdateItem(c *gin.Context) {
 	id := c.Param("id")
 	var item models.Item
@@ -110,7 +109,6 @@ func UpdateItem(c *gin.Context) {
 }
 
 // DELETE /inventory - Delete an item by ID 
-
 func DeleteItem(c *gin.Context) {
 	id := c.Param("id")
 	var item models.Item

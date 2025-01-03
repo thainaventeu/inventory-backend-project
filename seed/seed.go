@@ -1,7 +1,6 @@
 package seed
 
 import (
-    // "inventory-backend/config"
     "inventory-backend/models"
     "log"
 )
