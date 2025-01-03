@@ -14,7 +14,7 @@ Make sure you have the following installed on your system:
     psql postgres
     CREATE ROLE postgres_user WITH LOGIN PASSWORD 'your_password'
     ALTER ROLE postgres CREATEDB;
-    CREATE DATABASE inventory OWNER postgres_user;
+
     \q
 
 
@@ -26,16 +26,16 @@ Make sure you have the following installed on your system:
    cd inventory-backend
 
 
-2. Install all the dependecies
+2. **Install all the dependecies**
    ```bash
    go mod tidy
 
-3. Execute the server 
+3. **Execute the server in background** 
     ```bash
-    go run main.go
+    go run main.go &
 
-4. Set up the database:
-Create a local PostgreSQL database named inventory_db.
+4. **Set up the database:**
+Create a local PostgreSQL database named inventory.
 Update the connection settings in the config/database.go file:
 
 ```bash
@@ -44,7 +44,24 @@ Update the connection settings in the config/database.go file:
     Port     = 5432
     User     = "your_username"
     Password = "your_password"
-    DBName   = "inventory_db"
+    DBName   = "inventory"
 )
 
-# inventory-backend-project
+## ✅ How To Validate This Project
+
+1. **Create an item:**
+    ```bash
+    curl -X POST -H "Content-Type: application/json" -d '{"name":"Monitor","stock":3,"price":300}' http://localhost:8080/inventory
+
+2. **Update an item:**
+    ```bash
+    curl -X PUT -H "Content-Type: application/json" -d '{"name":"Updated Laptop","stock":10,"price":2000}' http://localhost:8080/inventory/1
+
+3. **Delete an item:**
+    ```bash
+    curl -X DELETE http://localhost:8080/inventory/1
+
+4. **Find a specific item:**
+    ```bash
+    curl -X GET http://localhost:8080/inventory/1
+

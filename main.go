@@ -1,27 +1,38 @@
 package main
 
 import (
-    "inventory-backend/config"
-    "inventory-backend/routes"
-    "github.com/gin-gonic/gin"
+	"inventory-backend/config"
+	"inventory-backend/routes"
 	"inventory-backend/seed"
+    "inventory-backend/models"
+	"github.com/didip/tollbooth"
+	"github.com/didip/tollbooth_gin"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-    // Inicializar o banco de dados
-    config.ConnectDatabase()
+	// Initialize the database
+	config.ConnectDatabase()
 
+    // Assign the database connection to the models package
+    models.DB = config.DB
+
+	// Load seed data
 	seed.LoadSeedData()
 
-    // Inicializar o servidor Gin
-    r := gin.Default()
+	// Initialize the Gin server
+	r := gin.Default()
 
-    // Configurar rotas
-    routes.SetupRoutes(r)
+	// Configure rate limiting
+	limiter := tollbooth.NewLimiter(1, nil) // 1 request per second
+	limiter.SetBurst(5)                    // Burst capacity of 5 requests
 
-    // Rodar o servidor
-    r.Run(":8080")
+	// Apply rate limiting middleware
+	r.Use(tollbooth_gin.LimitHandler(limiter))
+
+	// Configure routes
+	routes.SetupRoutes(r)
+
+	// Run the server
+	r.Run(":8080")
 }
-
- 
-

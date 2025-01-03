@@ -3,14 +3,10 @@ package config
 import (
     "fmt"
     "log"
-
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
 	"inventory-backend/models"
 )
-
-
-
 
 var DB *gorm.DB
 
